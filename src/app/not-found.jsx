@@ -1,0 +1,1 @@
+import Link from "next/link";export default function NotFound(){return <main className="wrap section"><p className="eyebrow">PAGE NOT FOUND</p><h1>This coffee origin has not been found.</h1><p>The page may have moved.</p><Link className="button dark" href="/">Return home ↗</Link></main>}

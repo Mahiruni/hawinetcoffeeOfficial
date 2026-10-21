@@ -1,0 +1,1 @@
+export default function robots(){return {rules:process.env.VERCEL_ENV==="preview"?[{userAgent:"*",disallow:"/"}]:[{userAgent:"*",allow:"/",disallow:"/api/"}],sitemap:"https://hawinetcoffee.com/sitemap.xml"}}
