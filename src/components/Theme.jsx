@@ -5,7 +5,7 @@ import {MobileNavigation} from "./Premium";
 
 export function Header(){
  return <header className="header p-header"><div className="wrap p-header-row">
-  <Link className="brand p-brand" href="/" aria-label="Hawinet Coffee Export home"><img src={logo} alt="" width="62" height="48"/><span><strong>HAWINET<span className="p-brand-dot">.</span></strong><small>COFFEE EXPORT</small></span></Link>
+  <Link className="brand p-brand" href="/" aria-label="Hawinet Coffee Export home"><img src={logo} alt="Hawinet Coffee Export logo" width="136" height="76"/></Link>
   <nav className="p-desktop-nav" aria-label="Primary navigation">{nav.map(([label,path])=><Link key={path} href={path}>{label}</Link>)}</nav>
   <Link href="/contact-us/" className="p-nav-cta">Request Coffee <span aria-hidden="true">↗</span></Link>
   <MobileNavigation nav={nav}/>
