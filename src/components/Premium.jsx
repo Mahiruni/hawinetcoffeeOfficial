@@ -34,7 +34,7 @@ export function OriginExplorer({compact=false}){
         <div className="p-origin-detail-content"><span className="p-mini-label">ETHIOPIAN COFFEE ORIGIN / {String(origins.indexOf(selected)+1).padStart(2,"0")}</span><h4>{selected}<em> Coffee.</em></h4>
           <p>Explore Hawinet’s {selected} coffee offering. Request verified grades, processing details, samples and current availability directly from our export team.</p>
           <div className="p-detail-note"><span>ORIGIN</span><strong>Ethiopia · {selected}</strong></div>
-          <Link className="p-btn p-btn-ink" href={"/contact-us/?origin="+encodeURIComponent(selected)}>Inquire about {selected} <span>↗</span></Link>
+          <div className="p-origin-actions"><Link className="p-btn p-btn-ink" href={"/contact-us/?origin="+encodeURIComponent(selected)}>Inquire about {selected} <span>↗</span></Link><Link className="p-origin-learn" href={"/coffee-origins/"+selected.toLowerCase()+"/"}>Learn about origin ↗</Link></div>
         </div>
       </div>
     </div>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Hawinet Coffee">
+<rect width="64" height="64" rx="12" fill="#183D2E"/>
+<path d="M16 15v34M48 15v34M16 32h32" fill="none" stroke="#FAF8F3" stroke-linecap="square" stroke-width="8"/>
+<path d="M29 10c-2.5 5 1 7 3 10 2.5-4.5 5.5-7.5 3-10" stroke="#BA965C" fill="none" stroke-width="2.5" opacity=".92"/>
+</svg>

@@ -28,5 +28,8 @@ jobs:
       - name: Verify WordPress content import
         run: npm run test:data
 
+      - name: Validate SEO and indexing safety
+        run: npm run test:seo
+
       - name: Build production website
         run: npm run build

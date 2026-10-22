@@ -17,8 +17,9 @@ export function Footer(){
   <div className="wrap p-footer-grid">
   <div><Link className="p-footer-brand" href="/" aria-label="Hawinet Coffee Export home"><img src={logo} alt="Hawinet Coffee Export logo" width="150" height="82" loading="lazy" decoding="async"/></Link><p>From Ethiopia’s coffee-growing origins to partners around the world. Committed to meaningful relationships and exceptional coffee.</p><p className="p-footer-parent">PART OF HAMIYA INVESTMENT GROUP</p></div>
   <div><h3>Explore</h3>{nav.map(([label,path])=><Link href={path} key={path}>{label}</Link>)}</div>
+  <div><h3>Coffee sourcing</h3><Link href="/ethiopian-green-coffee/">Green coffee guide</Link><Link href="/coffee-origins/">Coffee origins</Link><Link href="/buyers/saudi-arabia/">Saudi Arabia buyers</Link><Link href="/buyers/united-states/">United States buyers</Link></div>
   <div><h3>Get in touch</h3><a href="mailto:info@hawinetcoffee.com">info@hawinetcoffee.com</a><a href="tel:+251911258161">+251 911 258 161</a><a href="tel:+251911258163">+251 911 258 163</a><p>Adulala, Adama, Ethiopia</p><p>Meskel Flower, Addis Ababa</p></div></div>
-  <div className="wrap p-footer-bottom"><span>© {new Date().getFullYear()} Hawinet Coffee Export. All rights reserved.</span><span>Rooted in Ethiopia. Shared with the world.</span><a href="https://hisabtechnologies.com/" target="_blank" rel="noopener noreferrer">Digital experience by Hisab Technologies ↗</a></div>
+  <div className="wrap p-footer-bottom"><span>© {new Date().getFullYear()} Hawinet Coffee Export. All rights reserved.</span><span>Rooted in Ethiopia. Shared with the world.</span><a href="https://hisabtechnologies.com/" target="_blank" rel="noopener noreferrer">Digital experience by Hisab Technologies ↗</a><Link href="/privacy/">Privacy & analytics</Link></div>
  </footer>;
 }
 export function Rich({html,className=""}){

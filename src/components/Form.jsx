@@ -12,12 +12,14 @@ export default function Form({kind="contact",initialOrigin=""}){
    const body=await response.json();
    if(!response.ok)throw new Error(body.error||"Delivery failed.");
    el.reset();setState({type:"success",message:"Your inquiry has been sent successfully."});
+   if(typeof window!=="undefined"&&typeof window.gtag==="function")window.gtag("event","generate_lead",{form_kind:kind});
   }catch(err){setState({type:"error",message:err.message||"Please use direct email below."})}
  }
  return <div className="form-box p-form-box"><p className="p-kicker">LET'S CONNECT</p><h2>{labels[kind]||labels.contact}</h2><p>Tell us what you’re looking for. We’ll help you take the next step.</p>
  <form onSubmit={submit}>
   {kind!=="newsletter"&&<div className="form-row"><label>Full name<input name="name" autoComplete="name" required maxLength="120" placeholder="Your full name"/></label><label>Company / organization<input name="company" maxLength="160" placeholder="Company name"/></label></div>}
   <div className="form-row"><label>Email address<input type="email" name="email" autoComplete="email" required maxLength="254" placeholder="name@company.com"/></label>{kind!=="newsletter"&&<label>Phone / WhatsApp<input name="phone" maxLength="70" autoComplete="tel" placeholder="+251 …"/></label>}</div>
+  {(kind==="sample"||kind==="contact")&&<label>Country<input name="country" maxLength="120" autoComplete="country-name" placeholder="Country of your business"/></label>}
   {(kind==="sample"||kind==="contact")&&<label>Coffee origin of interest<select name="origin" defaultValue={origins.includes(initialOrigin)?initialOrigin:""}><option value="">Not decided yet</option>{origins.map(x=><option key={x} value={x}>{x}</option>)}</select></label>}
   {kind==="sample"&&<div className="form-row"><label>Processing preference<select name="processing"><option value="">Not specified</option><option>Washed</option><option>Natural</option><option>Other / discuss</option></select></label><label>Estimated quantity<input name="quantity" maxLength="100" placeholder="e.g. 1 container (optional)"/></label></div>}
   {kind==="tour"&&<div className="form-row"><label>Position<input name="position" maxLength="120"/></label><label>Country<input name="country" maxLength="120"/></label><label>Company website<input name="companyWebsite" maxLength="250"/></label><label>Preferred tour duration<select name="duration"><option value="">Not decided</option><option>3 days</option><option>4 days</option><option>5 days</option></select></label></div>}

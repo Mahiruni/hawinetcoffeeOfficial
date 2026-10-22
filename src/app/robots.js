@@ -1,1 +1,9 @@
-export default function robots(){return {rules:process.env.VERCEL_ENV==="preview"?[{userAgent:"*",disallow:"/"}]:[{userAgent:"*",allow:"/",disallow:"/api/"}],sitemap:"https://hawinetcoffee.com/sitemap.xml"}}
+import {SITE_URL,INDEXING_ENABLED} from "../lib/seo";
+export default function robots(){
+ return {
+  rules:INDEXING_ENABLED?
+   [{userAgent:"*",allow:"/",disallow:["/api/"]}]:
+   [{userAgent:"*",disallow:"/"}],
+  ...(INDEXING_ENABLED?{sitemap:SITE_URL+"/sitemap.xml"}:{})
+ };
+}

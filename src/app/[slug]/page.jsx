@@ -4,11 +4,15 @@ import {Rich,Banner} from "../../components/Theme";
 import {OriginExplorer,GalleryWall} from "../../components/Premium";
 import Form from "../../components/Form";
 import {get,pages,posts,teaser} from "../../lib/site";
+import {makeMetadata,articleSchema,breadcrumbs} from "../../lib/seo";
+import StructuredData from "../../components/StructuredData";
 export const dynamicParams=false;
 export function generateStaticParams(){return [...pages.filter(x=>x.slug!=="home"),...posts].map(x=>({slug:x.slug}))}
 export async function generateMetadata({params}){
  const {slug}=await params;const item=get(slug);if(!item)return {};
- return {title:item.title,description:teaser(item.excerpt,155)||"Explore premium Ethiopian coffee and the Hawinet Coffee story.",alternates:{canonical:"/"+slug+"/"},openGraph:{title:item.title,type:item.type==="post"?"article":"website"}};
+ const descriptions={products:"Browse Ethiopian Arabica coffee origins, green coffee varieties and the Hawinet collection. Ask for sample details and current availability.","about-us":"Learn the story of Hawinet Coffee Export, its Ethiopian sourcing relationships, mission and origins.","contact-us":"Contact Hawinet Coffee Export in Adama and Addis Ababa. Discuss Ethiopian green coffee, sample requests and export sourcing.",gallery:"Explore original Hawinet Coffee photography from Ethiopia, including sourcing, production, community and company imagery.","news-blogs":"Read Hawinet Coffee Export insights, industry news and Ethiopian coffee origin stories."};
+ const titles={products:"Ethiopian Arabica & Green Coffee Products","about-us":"About Hawinet Coffee Export | Our Ethiopian Coffee Story","contact-us":"Contact Hawinet Coffee | Samples & Export Inquiries",gallery:"Hawinet Coffee Gallery | Ethiopian Coffee Photography","news-blogs":"Hawinet Coffee Journal | Ethiopian Coffee Insights"};
+ return makeMetadata({title:item.type==="post"?item.title:(titles[slug]||item.title),description:descriptions[slug]||teaser(item.excerpt,155)||"Explore Hawinet Coffee Export.",path:"/"+slug+"/",type:item.type==="post"?"article":"website",publishedTime:item.type==="post"?item.date.replace(" ","T")+"Z":undefined});
 }
 function News(){
  return <main id="main"><Banner title="The Hawinet Journal." description="Original Hawinet Coffee news, export updates, events and perspectives from the birthplace of coffee." tag="THE JOURNAL · IDEAS & INSIGHTS"/>
@@ -41,7 +45,7 @@ function Contact({item,origin}){
 }
 function Article({item}){
  const tour=item.slug==="early-bird-invitation-1st-edition";
- return <main id="main"><article><Banner title={item.title} description={teaser(item.excerpt,220)} tag={"HAWINET JOURNAL · "+item.date.slice(0,10)}/>
+ return <main id="main"><StructuredData data={articleSchema({title:item.title,description:teaser(item.excerpt,175),slug:item.slug,date:item.date,modified:item.modified,image:item.images?.[0]})}/><StructuredData data={breadcrumbs([{name:"Home",path:"/"},{name:"Hawinet Journal",path:"/news-blogs/"},{name:item.title,path:"/"+item.slug+"/"}])}/><article><Banner title={item.title} description={teaser(item.excerpt,220)} tag={"HAWINET JOURNAL · "+item.date.slice(0,10)}/>
  <div className="wrap p-article-layout"><div><p className="p-kicker">HAWINET COFFEE EXPORT · ORIGINAL ARTICLE</p>{tour&&<p className="p-archive-warning">Archive notice: this invitation describes a past event. Contact the team for information about any future coffee tours.</p>}<Rich html={item.html}/><div className="p-article-back"><Link className="p-editorial-link" href="/news-blogs/">← Back to all stories</Link></div></div>
  <aside className="p-article-aside"><p className="p-kicker">COFFEE BEGINS HERE</p><h3>Discover Ethiopia with Hawinet.</h3><p>Ask our team about original coffee origins, samples and export partnerships.</p><Link className="p-btn p-btn-ink" href="/contact-us/">Let's talk coffee ↗</Link></aside></div>
  {tour&&<section className="wrap p-section p-simple-form"><div className="p-section-heading"><div><p className="p-kicker">FUTURE COFFEE EXPERIENCES</p><h2>Inquire about future <em>coffee tours.</em></h2></div></div><Form kind="tour"/></section>}
