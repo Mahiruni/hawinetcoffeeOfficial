@@ -29,8 +29,8 @@ export function organizationSchema(){
  name:SITE_NAME,url:SITE_URL+"/",logo:LOGO_URL,
  description:"Ethiopian coffee export business connecting buyers with coffee origins and green coffee sourcing opportunities.",
  email:"info@hawinetcoffee.com",telephone:"+251911258161",
- address:[{"@type":"PostalAddress",addressLocality:"Adama",addressRegion:"Oromia",addressCountry:"ET"},
- {"@type":"PostalAddress",addressLocality:"Addis Ababa",addressCountry:"ET"}],
+ address:[{"@type":"PostalAddress",streetAddress:"Adulala",addressLocality:"Adama",addressRegion:"Oromia",addressCountry:"ET"},
+ {"@type":"PostalAddress",streetAddress:"Meskel Flower",addressLocality:"Addis Ababa",addressCountry:"ET"}],
  contactPoint:{"@type":"ContactPoint",contactType:"export inquiries",email:"info@hawinetcoffee.com",telephone:"+251911258161"},
  areaServed:[{"@type":"Country",name:"Ethiopia"}]
  };
