@@ -17,7 +17,6 @@ export default function Home(){
   <section className="p-hero">
    <div className="wrap p-hero-grid">
     <div className="p-hero-copy">
-     <div className="p-hero-status"><span className="p-live-dot"/> ETHIOPIAN COFFEE EXPORT HOUSE <span className="p-hero-rule"/></div>
      <h1>Born in Ethiopia.<br/><span>Shared with</span><br/><em>the world.</em></h1>
      <p>Remarkable Ethiopian Arabica. Meaningful origin relationships. An export experience rooted in quality, care, and connection.</p>
      <div className="p-hero-buttons"><Link href="/products/" className="p-btn p-btn-ink">Explore our coffee <span>↗</span></Link><Link href="/contact-us/" className="p-btn p-btn-link">Request samples <span>↗</span></Link></div>
