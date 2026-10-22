@@ -1,12 +1,12 @@
 import Link from "next/link";
 import sanitizeHtml from "sanitize-html";
 import {nav,logo} from "../lib/site";
-import {MobileNavigation} from "./Premium";
+import {MobileNavigation,DesktopNavigation} from "./Premium";
 
 export function Header(){
  return <header className="header p-header"><div className="wrap p-header-row">
-  <Link className="brand p-brand" href="/" aria-label="Hawinet Coffee Export home"><img src={logo} alt="Hawinet Coffee Export logo" width="136" height="76"/></Link>
-  <nav className="p-desktop-nav" aria-label="Primary navigation">{nav.map(([label,path])=><Link key={path} href={path}>{label}</Link>)}</nav>
+  <Link className="brand p-brand" href="/" aria-label="Hawinet Coffee Export home"><img src={logo} alt="Hawinet Coffee Export logo" width="136" height="76" decoding="async" fetchPriority="high"/></Link>
+  <DesktopNavigation nav={nav}/>
   <Link href="/contact-us/" className="p-nav-cta">Request Coffee <span aria-hidden="true">↗</span></Link>
   <MobileNavigation nav={nav}/>
  </div></header>
@@ -15,7 +15,7 @@ export function Footer(){
  return <footer className="footer p-footer">
   <div className="wrap p-footer-hero"><div><p className="p-kicker p-kicker-light">BETTER COFFEE STARTS AT THE SOURCE</p><h2>Let's grow something <em>remarkable.</em></h2></div><Link className="p-btn p-btn-cream" href="/contact-us/">Start a conversation <span>↗</span></Link></div>
   <div className="wrap p-footer-grid">
-  <div><Link className="p-footer-brand" href="/" aria-label="Hawinet Coffee Export home"><img src={logo} alt="Hawinet Coffee Export logo" width="150" height="82" loading="lazy"/></Link><p>From Ethiopia’s coffee-growing origins to partners around the world. Committed to meaningful relationships and exceptional coffee.</p><p className="p-footer-parent">PART OF HAMIYA INVESTMENT GROUP</p></div>
+  <div><Link className="p-footer-brand" href="/" aria-label="Hawinet Coffee Export home"><img src={logo} alt="Hawinet Coffee Export logo" width="150" height="82" loading="lazy" decoding="async"/></Link><p>From Ethiopia’s coffee-growing origins to partners around the world. Committed to meaningful relationships and exceptional coffee.</p><p className="p-footer-parent">PART OF HAMIYA INVESTMENT GROUP</p></div>
   <div><h3>Explore</h3>{nav.map(([label,path])=><Link href={path} key={path}>{label}</Link>)}</div>
   <div><h3>Get in touch</h3><a href="mailto:info@hawinetcoffee.com">info@hawinetcoffee.com</a><a href="tel:+251911258161">+251 911 258 161</a><a href="tel:+251911258163">+251 911 258 163</a><p>Adulala, Adama, Ethiopia</p><p>Meskel Flower, Addis Ababa</p></div></div>
   <div className="wrap p-footer-bottom"><span>© {new Date().getFullYear()} Hawinet Coffee Export. All rights reserved.</span><span>Rooted in Ethiopia. Shared with the world.</span><a href="https://hisabtechnologies.com/" target="_blank" rel="noopener noreferrer">Digital experience by Hisab Technologies ↗</a></div>

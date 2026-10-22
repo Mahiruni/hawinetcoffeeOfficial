@@ -1,5 +1,6 @@
 import "./globals.css";
 import "./premium.css";
+import "./polish.css";
 import {Header,Footer} from "../components/Theme";
 export const metadata={
  metadataBase:new URL("https://hawinetcoffee.com"),
