@@ -12,8 +12,8 @@ export async function POST(request){
  if(!types.has(kind)||!(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))||safe(data?.consent,10)!=="yes")return NextResponse.json({error:"Valid email and consent required."},{status:400});
  if(data.website_confirm)return NextResponse.json({ok:true});
  if(kind!=="newsletter"&&!safe(data.name,120))return NextResponse.json({error:"Name is required."},{status:400});
- if(!process.env.RESEND_API_KEY||!process.env.CONTACT_FROM_EMAIL)return NextResponse.json({error:"Online form delivery is not yet configured. Please email info@hawinetcoffee.com directly."},{status:503});
- const fields=["name","company","email","phone","origin","position","country","companyWebsite","duration","message"];
+ if(!process.env.RESEND_API_KEY||!process.env.CONTACT_FROM_EMAIL)return NextResponse.json({error:"Online delivery is not configured. Please email info@hawinetcoffee.com directly."},{status:503});
+ const fields=["name","company","email","phone","origin","processing","quantity","position","country","companyWebsite","duration","message"];
  const rows=fields.map(key=>[key,safe(data[key],key==="message"?3000:254)]).filter(row=>row[1]);
  const html="<h2>Hawinet Coffee "+escapeHtml(kind)+" inquiry</h2><ul>"+rows.map(row=>"<li><strong>"+escapeHtml(row[0])+":</strong> "+escapeHtml(row[1])+"</li>").join("")+"</ul>";
  try{
